@@ -1,0 +1,268 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Home page
+{%endblock title %} {% block content %}
+
+<div class="container">
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const ctx = document.getElementById("myChart");
+
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: [{% for element in labels %} '{{ element }}', {% endfor %}],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [{% for number in data %} '{{ number }}', {% endfor %}],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  </script>
+
+  <p class="text-center">Текущие показатели на {{ time }}</p>
+
+  <div class="container m-5">
+    <p class="text-center">
+      Быстрые ответы на некоторые часто задаваемые вопросы о загрязнении воздуха
+      в Алматы
+    </p>
+  </div>
+
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseOne"
+          aria-expanded="false"
+          aria-controls="flush-collapseOne"
+        >
+          1. Какой текущий индекс качества воздуха (AQI) в Алматы ?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseOne"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingOne"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          Качество воздуха в режиме реального времени в г. Алматы является 189
+          (POOR) AQI сейчас. Последнее обновление 3 часа назад.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseTwo"
+          aria-expanded="false"
+          aria-controls="flush-collapseTwo"
+        >
+          2. В какое время года самое плохое качество воздуха в Алматы?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseTwo"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingTwo"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          Как правило, качество воздуха на Алматы начинает ухудшаться в конце
+          октября. Зима является наиболее пострадавшим сезоном с точки зрения
+          загрязнения воздуха.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseThree"
+          aria-expanded="false"
+          aria-controls="flush-collapseThree"
+        >
+          3. О чем следует позаботиться перед выходом на улицу, когда Almaty АQI
+          очень высокий?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseThree"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingThree"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          Вы должны носить хорошую маску N95, когда выходите на улицу в Almaty
+          пока AQI не улучшится до умеренного диапазона.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingFour">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseFour"
+          aria-expanded="false"
+          aria-controls="flush-collapseFour"
+        >
+          4.Как люди, работающие в офисе, или кто-либо другой могут избежать
+          загрязнения воздуха в Алматы?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseFour"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingFour"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          Люди, работающие в офисе, должны избегать личных транспортных средств
+          и использовать общественный транспорт или совместное использование
+          автомобилей.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingFive">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseFive"
+          aria-expanded="false"
+          aria-controls="flush-collapseFive"
+        >
+          5.Каковы основные причины загрязнения атмосферного воздуха и воздуха
+          внутри помещений в Алматы
+        </button>
+      </h2>
+      <div
+        id="flush-collapseFive"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingFive"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          (i) Основными причинами загрязнения атмосферного воздуха являются
+          твердые жидкие частицы, называемые аэрозолями и газами, в результате
+          выбросов транспортных средств, строительных работ, заводов, сжигания
+          стерни и ископаемого топлива, а также лесных пожаров и т. д. (ii)
+          Основными причинами загрязнения воздуха внутри помещений являются
+          вредные газы от топлива для приготовления пищи (например, древесина,
+          отходы растениеводства, древесный уголь, уголь и навоз), сырость, дым
+          от плесени, химические вещества от чистящих средств и т. д.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingSix">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseSix"
+          aria-expanded="false"
+          aria-controls="flush-collapseSix"
+        >
+          6.Какова текущая концентрация PM2.5 в Алматы? Я должен беспокоиться?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseSix"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingSix"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          Текущая концентрация PM2.5 в Алматы является 127 (µg/m³). Всемирная
+          организация здравоохранения (WHO) рекомендует 15 мкг/м³ в качестве
+          пороговой концентрации PM2.5 в течение 24 часов. В настоящее время
+          концентрация 5.08 раз превышает рекомендуемый предел.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingSeven">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseSeven"
+          aria-expanded="false"
+          aria-controls="flush-collapseSeven"
+        >
+          7. Насколько вредно загрязнение воздуха внутри помещений в Алматы и
+          почему?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseSeven"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingSeven"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          Загрязнение воздуха внутри помещений в Алматы так же опасно, как
+          загрязнение окружающей среды, потому что загрязнители воздуха попадают
+          внутрь домов или зданий через двери, окна и вентиляцию.
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingEight">
+        <button
+          class="accordion-button collapsed"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#flush-collapseEight"
+          aria-expanded="false"
+          aria-controls="flush-collapseEight"
+        >
+          8. Какое решение проблемы загрязнения воздуха внутри помещений в
+          Almaty?
+        </button>
+      </h2>
+      <div
+        id="flush-collapseEight"
+        class="accordion-collapse collapse"
+        aria-labelledby="flush-headingEight"
+        data-bs-parent="#accordionFlushExample"
+      >
+        <div class="accordion-body">
+          В Алматы, вы должны использовать очиститель воздуха или машину свежего
+          воздуха дома или в офисе в помещении и закрыть все двери, окна и
+          вентиляцию, когда индекс качества наружного воздуха (aqi) в Алматы
+          очень высок. Надлежащая вентиляция настоятельно рекомендуется только
+          при улучшении качества наружного воздуха и умеренном диапазоне AQI.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+</div>
