@@ -22,6 +22,6 @@
    pip install -r requirements.txt
    ```
 3. ```
-         python manage.py runserver
+   python manage.py runserver
    ```
-   > Премичание `В проекте был использован Python 3.10.0`
+> Премичание `В проекте был использован Python 3.10.0`
